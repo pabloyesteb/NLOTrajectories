@@ -1,0 +1,30 @@
+body:
+  shape: rectangle
+  dynamic: unicycle
+  goal_mode: center
+  length: 0.2
+  width: 0.1
+  start_state: [0.0, 0.0, 0.785]
+  goal_state: [1.0, 1.0]
+  control_bounds: [-1.0, 1.0]
+
+obstacles:
+  - type: circle
+    center: [0.5, 0.5]
+    radius: 0.2
+    margin: 0.0
+  - type: square
+    center: [1.2, 0.37]
+    size: 0.1
+    margin: 0.0
+  - type: square
+    center: [1.1, 0.7]
+    size: 0.1
+    margin: 0.0
+
+solver:
+  N: 200
+  dt: 0.02
+  use_slack: true
+  slack_penalty: 200
+  mode: casadi  # TODO: l4casadi

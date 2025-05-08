@@ -8,7 +8,9 @@ authors = [
 readme = "README.md"
 requires-python = "^3.12"
 dependencies = [
-    "casadi (>=3.7.0,<4.0.0)"
+    "casadi (>=3.7.0,<4.0.0)",
+    "pydantic (>=2.11.4,<3.0.0)",
+    "pyyaml (>=6.0.2,<7.0.0)"
 ]
 
 
@@ -22,6 +24,7 @@ isort = "^6.0.1"
 flake8 = "^7.2.0"
 ipykernel = "^6.29.5"
 matplotlib = "^3.10.1"
+pytest = "^8.3.5"
 
 [tool.black]
 line-length = 120
@@ -29,3 +32,15 @@ target-version = ["py312"]
 
 [tool.isort]
 profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+python_classes = "*Test Test*"
+
+[tool.poetry]
+packages = [{ include = "nlotrajectories", from = "src" }]
+
+[tool.poetry.scripts]
+run-benchmark = "nlotrajectories.scripts.run_benchmark:main"

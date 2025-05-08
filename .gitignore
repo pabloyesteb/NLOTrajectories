@@ -51,3 +51,7 @@ MANIFEST
 # OS/macOS/Windows
 .DS_Store
 Thumbs.db
+
+# Results
+*.png
+*.gif
