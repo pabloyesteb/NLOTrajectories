@@ -39,7 +39,7 @@ def compute_metrics(obstacles, x_range=(-1, 2), y_range=(-1, 2), n_samples=1000)
     return mse_value, iou_value, hausdorff_value, chamfer_value, surface_loss_value
 
 
-def run_benchmark(config_path: Path):
+def run_benchmark(config_path: Path, verbose: bool = True):
     config = Config(**load_config(config_path))
     obstacles = config.get_obstacles()
 
@@ -79,6 +79,10 @@ def run_benchmark(config_path: Path):
 
     objective_value = float(opti.debug.value(opti.f))
     solver_time = end_time - start_time
+
+    if not verbose:
+        return X_opt
+    
     print("Objective value:", objective_value)
     print("Computation time for the solver:", solver_time)
 
@@ -131,7 +135,7 @@ def run_benchmark(config_path: Path):
                 f"{objective_value:3f},{solver_time:2f},{mse_value:6f},{iou_value:6f},{hausdorff_value:6f},"
                 f"{chamfer_value:6f},{surface_loss_value:6f}\n"
             )
-
+    return X_opt
 
 def main():
     parser = argparse.ArgumentParser()

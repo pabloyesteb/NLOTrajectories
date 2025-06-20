@@ -1,0 +1,29 @@
+body:
+  shape: dot
+  dynamic: point_2nd
+  goal_mode: center
+  start_state: [0.09, 0.07, 0.0, 0.0]
+  goal_state: [0.96, 0.82, 0.0, 0.0]
+  control_bounds: [-1.0, 1.0]
+obstacles:
+- type: square
+  center: [0.5, 0.4]
+  size: 0.1
+  margin: 0.05
+- type: circle
+  center: [0.8, 0.4]
+  radius: 0.2
+  margin: 0.05
+- type: circle
+  center: [0.3, 0.8]
+  radius: 0.2
+  margin: 0.05
+- type: square
+  center: [0.7, 0.7]
+  size: 0.1
+  margin: 0.05
+- type: square
+  center: [0.2, 0.4]
+  size: 0.1
+  margin: 0.05
+solver: {N: 40, dt: 0.1, mode: casadi}
